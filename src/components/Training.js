@@ -29,6 +29,10 @@ const Training = () => {
                 const savedTraining = await response.json();
                 setMessage(`Thank you ${savedTraining.name}, your ${savedTraining.course} is booked on ${savedTraining.date}. We will contact you at ${savedTraining.mobile}!`);
                 setForm({ name: '', email: '', mobile: '', course: '' });
+
+                setTimeout(() => {
+        setMessage('');
+    }, 5000);
             } else {
                 setMessage('Booking failed. Please try again.');
             }
