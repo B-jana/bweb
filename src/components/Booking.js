@@ -19,7 +19,7 @@ const Booking = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://bweb-nu.vercel.app/api/booking', {
+            const response = await fetch('https://bwebbackend.onrender.com/api/booking', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
