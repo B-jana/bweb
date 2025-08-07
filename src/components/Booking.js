@@ -31,6 +31,10 @@ const Booking = () => {
                 const savedBooking = await response.json();
                 setMessage(`Thank you ${savedBooking.name}, your ${savedBooking.service} is booked on ${savedBooking.date}. We will contact you at ${savedBooking.mobile}!`);
                 setForm({ name: '', mobile: '', date: '', service: '' });
+                setTimeout(() => {
+        setMessage('');
+    }, 5000);
+                
             } else {
                 setMessage('Booking failed. Please try again.');
             }
