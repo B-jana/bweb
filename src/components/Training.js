@@ -17,7 +17,7 @@ const Training = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://bwebbackend.onrender.com/api/training', {
+            const response = await fetch('https://bweb-nu.vercel.app/api/training', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
