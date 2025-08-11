@@ -9,6 +9,7 @@ const Booking = () => {
         date: '',
         service: '',
     });
+    
     const [message, setMessage] = useState('');
 
     const handleChange = e => {
