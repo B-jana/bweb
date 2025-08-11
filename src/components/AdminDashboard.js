@@ -80,8 +80,6 @@ const AdminDashboard = () => {
                         style={{
                             padding: "10px",
                             cursor: "pointer",
-                            backgroundColor: selected === "trainings" ? "#e91e63" : "transparent",
-                            color: selected === "trainings" ? "white" : "black",
                             borderRadius: 5,
                         }}
                     >
