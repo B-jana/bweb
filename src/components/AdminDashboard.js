@@ -15,7 +15,7 @@ const AdminDashboard = () => {
             setLoading(true);
             setError("");
             try {
-                const res = await fetch(`http://localhost:8080/api/${selected}`);
+                const res = await fetch(`https://bwebbackend.onrender.com/${selected}`);
                 if (!res.ok) throw new Error("Failed to fetch data");
                 const json = await res.json();
                 setData(json);
