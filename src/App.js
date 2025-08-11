@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Booking from './components/Booking';
 import Training from './components/Training';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard ';
 
 
 function App() {
