@@ -2,45 +2,72 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Navbar */
 .navbar {
   background: #f06eaa;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
-   flex-wrap: wrap
   justify-content: space-between;
+  align-items: center;
   color: white;
+  flex-wrap: wrap; /* wrap on small screens */
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  flex-wrap: wrap; 
   gap: 1rem;
   margin: 0;
-  padding: 0; 
+  padding: 0;
+  flex-wrap: wrap; /* wrap on small screens */
 }
 
 .navbar ul li a {
   color: white;
   text-decoration: none;
+  font-weight: 600;
 }
 
+.navbar ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main content to push footer down */
+.main-content {
+  flex: 1 0 auto; /* allow growing */
+  padding: 2rem;
+}
+
+/* Footer */
 .footer {
   background: #222;
   color: #fff;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  flex-shrink: 0; /* don’t shrink */
+  font-size: 0.9rem;
 }
 
-.main-content {
-  padding: 2rem;
-}
-
+/* Form styles */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 400px;
+  margin: auto;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: center;
+  }
+  .navbar ul {
+    justify-content: center;
+  }
 }
