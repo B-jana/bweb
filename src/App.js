@@ -7,10 +7,21 @@ import Booking from './components/Booking';
 import Training from './components/Training';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
-
+import React, { useEffect } from 'react';
 
 
 function App() {
+
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      alert("😂😂😂😂😂");
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
   return (
     <>
       <Router>
