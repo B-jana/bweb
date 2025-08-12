@@ -21,8 +21,8 @@ const Training = () => {
             errs.name = "Name is required";
         }
 
-         if (!form.email) {
-            errs.service = "Email is required";
+         if (!form.email.trim()) {
+            errs.email = "Email is required";
         }
         if (!form.mobile.trim()) {
             errs.mobile = "Mobile number is required";
