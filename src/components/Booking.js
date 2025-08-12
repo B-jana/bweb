@@ -61,6 +61,17 @@ const Booking = () => {
          if (!validate()) {
             return;
         }
+
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to confirm your booking?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, book it!',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#e91e63',
+        });
+        if (result.isConfirmed){
         try {
             const response = await fetch('https://bwebbackend.onrender.com/api/booking', {
                 method: 'POST',
@@ -71,22 +82,26 @@ const Booking = () => {
             });
 
             if (response.ok) {
-                const savedBooking = await response.json();
-                setMessage(`Thank you ${savedBooking.name}, your ${savedBooking.service} is booked on ${savedBooking.date}. We will contact you at ${savedBooking.mobile}!`);
-                setForm({ name: '', mobile: '', date: '', service: '' });
-                setTimeout(() => {
-                    setMessage('');
-                }, 5000);
-
-
-            } else {
-                setMessage('Booking failed. Please try again.');
+                    const savedBooking = await response.json();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Booking Confirmed!',
+                        html: `
+            <p>Dear <strong>${savedBooking.name}</strong>,</p>
+            <p>Your <strong>${savedBooking.service}</strong> appointment is booked for <strong>${savedBooking.date}</strong>.</p>
+            <p>We will contact you at <strong>${savedBooking.mobile}</strong>.</p>
+          `,
+                        confirmButtonColor: '#e91e63',
+                    });
+                    setForm({ name: '', mobile: '', date: '', service: '' });
+                } else {
+                    Swal.fire('Oops!', 'Booking failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                console.error("error", error);
+                setMessage('Something went wrong. Please try again.');
             }
-        } catch (error) {
-            console.error("error", error);
-            setMessage('Something went wrong. Please try again.');
         }
-
 
     };
 
