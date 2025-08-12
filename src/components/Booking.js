@@ -109,7 +109,7 @@ const Booking = () => {
 
     return (
         <div style={styles.container}>
-           <h2 style={styles.heading}>Book Your Makeup Appointment</h2>
+           <h2 style={{ color: '#333', textAlign: 'center', marginBottom: '1rem' }}>Book Your Makeup Appointment</h2>
 
             {message && <p style={styles.success}>{message}</p>}
 
@@ -182,11 +182,7 @@ const styles = {
         boxShadow: '0 0 10px rgba(0,0,0,0.1)',
         fontFamily: 'Arial, sans-serif',
     },
-    heading: {
-        textAlign: 'center',
-        marginBottom: '1rem',
-        color: '#333',
-    },
+    
     form: {
         display: 'flex',
         flexDirection: 'column',
