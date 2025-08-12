@@ -10,12 +10,45 @@ const Training = () => {
     });
     const [message, setMessage] = useState('');
 
+    const [errors, setErrors] = useState({});
+
+
+    // Validation function for all fields
+    const validate = () => {
+        const errs = {};
+
+        if (!form.name.trim()) {
+            errs.name = "Name is required";
+        }
+
+         if (!form.email) {
+            errs.service = "Email is required";
+        }
+        if (!form.mobile.trim()) {
+            errs.mobile = "Mobile number is required";
+        } else if (!/^[6-9][0-9]{9}$/.test(form.mobile)) {
+            errs.mobile = "Enter a valid 10-digit mobile number starting with 6-9";
+        }
+
+        if (!form.service) {
+            errs.course = "Please select a course";
+        }
+
+        setErrors(errs);
+        return Object.keys(errs).length === 0;
+    };
+
     const handleChange = e => {
         setForm({ ...form, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+        setMessage("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+         if (!validate()) {
+            return;
+        }
 
         try {
             const response = await fetch('https://bwebbackend.onrender.com/api/training', {
@@ -62,34 +95,37 @@ const Training = () => {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    required
+                   
                     style={styles.input}
                 />
+                    {errors.name && <p style={styles.error}>{errors.name}</p>}
                 <input
                     type="email"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
                     placeholder="Your Email"
-                    required
+                   
                     style={styles.input}
                 />
+                    {errors.email && <p style={styles.error}>{errors.email}</p>}
                 <input
                     type="tel"
                     name="mobile"
                     value={form.mobile}
                     onChange={handleChange}
                     placeholder="Mobile Number"
-                    required
+                    
                     pattern="[6-9]{1}[0-9]{9}"
                     title="Enter a valid 10-digit mobile number"
                     style={styles.input}
                 />
+                      {errors.mobile && <p style={styles.error}>{errors.mobile}</p>}
                 <select
                     name="course"
                     value={form.course}
                     onChange={handleChange}
-                    required
+                   
                     style={styles.input}
                 >
                     <option value="">Select Beautician Course</option>
@@ -98,7 +134,9 @@ const Training = () => {
                     <option value="Hairstyling & Draping">Hairstyling & Draping</option>
                     <option value="Professional Beautician Program">Professional Beautician Program</option>
                 </select>
+                 {errors.course && <p style={styles.error}>{errors.course}</p>}
 
+                     
                 <button type="submit" style={styles.button}>Enroll Now</button>
             </form>
         </div>
@@ -152,6 +190,12 @@ const styles = {
         textAlign: 'center',
         marginBottom: '1rem',
         fontWeight: 'bold',
+    },
+     error: {
+        color: "red",
+        fontSize: "0.85rem",
+        marginTop: "-0.75rem",
+        marginBottom: "0.75rem",
     },
 };
 
