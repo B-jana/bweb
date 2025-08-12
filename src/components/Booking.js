@@ -9,16 +9,58 @@ const Booking = () => {
         date: '',
         service: '',
     });
+    
 
     const [message, setMessage] = useState('');
 
+    const [errors, setErrors] = useState({});
+
+
+    // Validation function for all fields
+    const validate = () => {
+        const errs = {};
+
+        if (!form.name.trim()) {
+            errs.name = "Name is required";
+        }
+
+        if (!form.mobile.trim()) {
+            errs.mobile = "Mobile number is required";
+        } else if (!/^[6-9][0-9]{9}$/.test(form.mobile)) {
+            errs.mobile = "Enter a valid 10-digit mobile number starting with 6-9";
+        }
+
+        if (!form.date) {
+            errs.date = "Date is required";
+        } else {
+            const selectedDate = new Date(form.date);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate < today) {
+                errs.date = "Date cannot be in the past";
+            }
+        }
+
+        if (!form.service) {
+            errs.service = "Please select a service";
+        }
+
+        setErrors(errs);
+        return Object.keys(errs).length === 0;
+    };
+
+
     const handleChange = e => {
         setForm({ ...form, [e.target.name]: e.target.value });
+        setErrors({ ...errors, [e.target.name]: "" }); // Clear error on change
+        setMessage("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+         if (!validate()) {
+            return;
+        }
         try {
             const response = await fetch('https://bwebbackend.onrender.com/api/booking', {
                 method: 'POST',
@@ -61,45 +103,50 @@ const Booking = () => {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Your Name"
-                    required
+                   
                     style={styles.input}
                 />
+                    {errors.name && <p style={styles.error}>{errors.name}</p>}
                 <input
                     name="mobile"
                     type="tel"
                     value={form.mobile}
                     onChange={handleChange}
                     placeholder="Mobile Number"
-                    required
+                   
                     pattern="[6-9]{1}[0-9]{9}"
                     title="Enter a valid 10-digit mobile number"
                     style={styles.input}
                 />
+                    {errors.mobile && <p style={styles.error}>{errors.mobile}</p>}
                 <input
                     name="date"
                     type="date"
                     value={form.date}
                     onChange={handleChange}
-                    required
+                    placeholder="Date"
                     style={styles.input}
                 />
+                    {errors.date && <p style={styles.error}>{errors.date}</p>}
                 <select
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    required
+                   
                     style={styles.input}
                 >
+                       
                     <option value="">Select Service</option>
                     <option value="Bridal Makeup">Bridal Makeup</option>
                     <option value="Party Makeup">Party Makeup</option>
                     <option value="Fashion Makeup">Fashion Makeup</option>
                 </select>
+                         {errors.service && <p style={styles.error}>{errors.service}</p>}
 
                 <button
                     type="submit"
                     style={styles.button}
-                    disabled={!form.name || !form.mobile || !form.date || !form.service}
+                   
                 >
                     Book Now
                 </button>
