@@ -52,9 +52,9 @@ body {
 
 /* Main content */
 .main-content {
-  flex: 1 0 auto;
-  padding: 1rem 2rem; /* reduced padding */
-  margin: 0;
+  
+  padding: 2rem; /* reduced padding */
+  
 }
 
 /* Footer */
