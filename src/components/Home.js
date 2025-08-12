@@ -10,8 +10,8 @@ const Home = () => (
             color: 'white',
             padding: '2rem',
         }}>
-        <h1>Welcome to BeautifyMe</h1>
-        <p>Your one-stop destination for makeup services and beauty training programs.</p>
+        <h1>Welcome to Neelu Beauty Parlour</h1>
+        <h1>Your one-stop destination for makeup services and beauty training programs.</h1>
 
     </div>
 );
