@@ -109,7 +109,7 @@ const Booking = () => {
 
     return (
         <div style={styles.container}>
-            <h2 style={styles.heading}>Book Your Makeup Appointment</h2>
+           <h2 style="color: #333;">Book Your Makeup Appointment</h2>
 
             {message && <p style={styles.success}>{message}</p>}
 
