@@ -9,6 +9,7 @@ import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 
 
+
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
+
         </Routes>
 
         <Footer />

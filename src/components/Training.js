@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const Training = () => {
     const [form, setForm] = useState({
         name: '',
@@ -31,8 +32,10 @@ const Training = () => {
                 setForm({ name: '', email: '', mobile: '', course: '' });
 
                 setTimeout(() => {
-        setMessage('');
-    }, 5000);
+
+                    setMessage('');
+                }, 5000);
+
             } else {
                 setMessage('Booking failed. Please try again.');
             }
