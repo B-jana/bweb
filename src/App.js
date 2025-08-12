@@ -26,7 +26,7 @@ function App() {
      <>
       <Router>
         <Navbar />
-        
+        <div style={{ display: "flex" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/booking" element={<Booking />} />
@@ -35,7 +35,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
 
         </Routes>
-  
+       </div>
         <Footer />
       </Router>
     </>
