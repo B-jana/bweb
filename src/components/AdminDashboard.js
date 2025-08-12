@@ -32,7 +32,6 @@ const AdminDashboard = () => {
     const handleDelete = async (id) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "This action cannot be undone!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#e91e63",
@@ -100,17 +99,32 @@ const AdminDashboard = () => {
                         Trainings
                     </li>
                     <li
-                        onClick={() => navigate("/")}
-                        style={{
-                            padding: "10px",
-                            cursor: "pointer",
-                            backgroundColor: "transparent",
-                            color: "black",
-                            borderRadius: 5,
-                        }}
-                    >
-                        Logout
-                    </li>
+    onClick={() => {
+        Swal.fire({
+            title: "Are you sure you want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#e91e63",
+            cancelButtonColor: "#aaa",
+            confirmButtonText: "Yes, logout",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Do logout logic here if any (e.g., clearing tokens)
+                navigate("/");
+            }
+        });
+    }}
+    style={{
+        padding: "10px",
+        cursor: "pointer",
+        backgroundColor: "transparent",
+        color: "black",
+        borderRadius: 5,
+    }}
+>
+    Logout
+</li>
+
                 </ul>
             </aside>
 
