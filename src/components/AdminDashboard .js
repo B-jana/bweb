@@ -17,7 +17,7 @@ const AdminDashboard = () => {
         setLoading(true);
         setError("");
         try {
-            const res = await fetch(`http://localhost:8080/api/${selected}`);
+            const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
             if (!res.ok) throw new Error("Failed to fetch data");
             const json = await res.json();
             setData(json);
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://localhost:8080/api/${selected}/${id}`, {
+                    const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}/${id}`, {
                         method: "DELETE",
                     });
                     if (!res.ok) throw new Error("Failed to delete record");
