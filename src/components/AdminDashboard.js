@@ -184,7 +184,15 @@ const AdminDashboard = () => {
                                             key={col}
                                             style={{ border: "1px solid #ccc", padding: "8px" }}
                                         >
-                                            {item[col]}
+                                           {col === "date" && item[col]
+                                                ? (() => {
+                                                    const d = new Date(item[col]);
+                                                    const day = String(d.getDate()).padStart(2, "0");
+                                                    const month = String(d.getMonth() + 1).padStart(2, "0");
+                                                    const year = d.getFullYear();
+                                                    return `${day}-${month}-${year}`;
+                                                })()
+                                                : item[col]}
                                         </td>
                                     ))}
                                     <td
