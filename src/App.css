@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -5,6 +11,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 /* Navbar */
@@ -15,7 +22,8 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
-  flex-wrap: wrap; /* wrap on small screens */
+  flex-wrap: wrap;
+  margin: 0; /* Ensure no margin */
 }
 
 .navbar ul {
@@ -24,7 +32,12 @@ body {
   gap: 1rem;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap; /* wrap on small screens */
+  flex-wrap: wrap;
+}
+
+.navbar ul li {
+  margin: 0;
+  padding: 0;
 }
 
 .navbar ul li a {
@@ -37,10 +50,11 @@ body {
   text-decoration: underline;
 }
 
-/* Main content to push footer down */
+/* Main content */
 .main-content {
-  flex: 1 0 auto; /* allow growing */
-  padding: 2rem;
+  flex: 1 0 auto;
+  padding: 1rem 2rem; /* reduced padding */
+  margin: 0;
 }
 
 /* Footer */
@@ -49,17 +63,9 @@ body {
   color: #fff;
   text-align: center;
   padding: 1rem 2rem;
-  flex-shrink: 0; /* don’t shrink */
+  flex-shrink: 0;
   font-size: 0.9rem;
-}
-
-/* Form styles */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin: auto;
+  margin: 0; /* Ensure no margin */
 }
 
 /* Responsive tweaks */
