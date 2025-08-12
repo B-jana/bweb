@@ -30,7 +30,7 @@ const Training = () => {
             errs.mobile = "Enter a valid 10-digit mobile number starting with 6-9";
         }
 
-        if (!form.service) {
+        if (!form.course) {
             errs.course = "Please select a course";
         }
 
