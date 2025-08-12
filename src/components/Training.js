@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Swal from "sweetalert2";
 
 const Training = () => {
     const [form, setForm] = useState({
