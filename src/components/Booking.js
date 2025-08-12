@@ -197,6 +197,12 @@ const styles = {
         marginBottom: '1rem',
         fontWeight: 'bold',
     },
+    error: {
+        color: "red",
+        fontSize: "0.85rem",
+        marginTop: "-0.75rem",
+        marginBottom: "0.75rem",
+    },
 };
 
 export default Booking;
