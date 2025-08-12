@@ -1,0 +1,96 @@
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.admin-sidebar {
+  width: 200px;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-right: 1px solid #ccc;
+}
+
+.admin-sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-sidebar ul li {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.admin-sidebar ul li.active,
+.admin-sidebar ul li:hover {
+  background-color: #e91e63;
+  color: white;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 1rem;
+  overflow-x: auto; /* horizontal scroll for small screens */
+}
+
+.admin-main h2 {
+  margin-top: 0;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  min-width: 600px; /* avoid too narrow table */
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.admin-table th {
+  background-color: #f0f0f0;
+  text-transform: capitalize;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #ffe0eb;
+}
+
+.admin-table td.actions {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.admin-table button.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-table button.delete-btn:hover {
+  background-color: darkred;
+}
