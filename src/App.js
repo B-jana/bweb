@@ -23,10 +23,10 @@ function App() {
     };
   }, []);
   return (
-    <>
+     <div className="main-wrapper">
       <Router>
         <Navbar />
-
+        <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/booking" element={<Booking />} />
@@ -35,10 +35,10 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
 
         </Routes>
-
+  </div>
         <Footer />
       </Router>
-    </>
+    </div>
   );
 }
 
