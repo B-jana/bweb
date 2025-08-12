@@ -26,7 +26,7 @@ function App() {
      <>
       <Router>
         <Navbar />
-       
+       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/booking" element={<Booking />} />
@@ -35,7 +35,7 @@ function App() {
           <Route path="/admin" element={<AdminDashboard />} />
 
         </Routes>
-     
+       </main>
         <Footer />
       </Router>
     </>
