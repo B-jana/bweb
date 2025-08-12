@@ -36,7 +36,7 @@ const AdminDashboard = () => {
             showCancelButton: true,
             confirmButtonColor: "#e91e63",
             cancelButtonColor: "#aaa",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes",
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
