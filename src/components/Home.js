@@ -7,9 +7,9 @@ const Home = () => (
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '100vh',
-            width: '100vw',       
+                   
             color: 'white',
-            padding: '2rem',
+            
         }}>
         <h1>Welcome to Neelu Beauty Parlour</h1>
         <h1>Your one-stop destination for makeup services and beauty training programs.</h1>
