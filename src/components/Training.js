@@ -50,6 +50,16 @@ const Training = () => {
             return;
         }
 
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to confirm your enrollment?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, enroll me!',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#e91e63',
+        });
+        if (result.isConfirmed){
         try {
             const response = await fetch('https://bwebbackend.onrender.com/api/training', {
                 method: 'POST',
@@ -61,22 +71,28 @@ const Training = () => {
 
             if (response.ok) {
                 const savedTraining = await response.json();
-                setMessage(`Thank you ${savedTraining.name}, your ${savedTraining.course} is booked on ${savedTraining.date}. We will contact you at ${savedTraining.mobile}!`);
+
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Enrollment Confirmed!',
+                    html: `
+                        <p>Thank you <strong>${savedTraining.name}</strong>!</p>
+                        <p>You are enrolled in the <strong>${savedTraining.course}</strong> course.</p>
+                        <p>We will contact you at <strong>${savedTraining.mobile}</strong> or <strong>${savedTraining.email}</strong>.</p>
+                    `,
+                    confirmButtonColor: '#e91e63',
+                });
+
                 setForm({ name: '', email: '', mobile: '', course: '' });
-
-                setTimeout(() => {
-
-                    setMessage('');
-                }, 5000);
-
+                setMessage('');
             } else {
-                setMessage('Booking failed. Please try again.');
+                Swal.fire('Oops!', 'Enrollment failed. Please try again.', 'error');
             }
         } catch (error) {
             console.error("error", error);
-            setMessage('Something went wrong. Please try again.');
+            Swal.fire('Oops!', 'Something went wrong. Please try again.', 'error');
         }
-
+        }
 
     };
 
