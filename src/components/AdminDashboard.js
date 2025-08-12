@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import "./AdminDashboard.css"; // Import the CSS
+import "../AdminDashboard.css"; // Import the CSS
 
 const AdminDashboard = () => {
   const [selected, setSelected] = useState("bookings");
