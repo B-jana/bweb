@@ -7,6 +7,7 @@ const Home = () => (
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             height: '100vh',
+            width: '100%',       
             color: 'white',
             padding: '2rem',
         }}>
