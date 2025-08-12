@@ -146,6 +146,9 @@ const AdminDashboard = () => {
                     >
                         <thead>
                             <tr>
+                         <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0" }}>
+                                    S.No
+                                </th>
                                 {columns.map((col) => (
                                     <th
                                         key={col}
@@ -175,6 +178,7 @@ const AdminDashboard = () => {
                         <tbody>
                             {data.map((item, idx) => (
                                 <tr key={idx}>
+                                <td style={{ border: "1px solid #ccc", padding: "8px" }}>{idx + 1}</td>
                                     {columns.map((col) => (
                                         <td
                                             key={col}
