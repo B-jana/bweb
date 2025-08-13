@@ -72,6 +72,10 @@ const Training = () => {
             if (response.ok) {
                 const savedTraining = await response.json();
 
+                 // Dispatch event so AdminDashboard knows about new training
+                const event = new CustomEvent('new-training', { detail: savedTraining });
+                window.dispatchEvent(event);
+                
                 await Swal.fire({
                     icon: 'success',
                     title: 'Enrollment Confirmed!',
