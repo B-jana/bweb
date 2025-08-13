@@ -31,8 +31,8 @@ const AdminDashboard = () => {
       const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
       if (!res.ok) throw new Error("Failed to fetch data");
       const json = await res.json();
-      // Show most recent first  and recent records first
-      setData(json.reverse());
+     
+      setData(json);
 
     } catch (err) {
       setError(err.message || "Error fetching data");
