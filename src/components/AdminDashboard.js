@@ -31,7 +31,9 @@ const AdminDashboard = () => {
       const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
       if (!res.ok) throw new Error("Failed to fetch data");
       const json = await res.json();
-      setData(json);
+      // Show most recent first  and recent records first
+      setData(json.reverse());
+
     } catch (err) {
       setError(err.message || "Error fetching data");
       setData([]);
@@ -81,6 +83,25 @@ const AdminDashboard = () => {
       return updated;
     });
   };
+
+  // recent records first
+  useEffect(() => {
+  const handleNewBooking = (e) => {
+    if (selected === "bookings") setData((prev) => [e.detail, ...prev]);
+  };
+  const handleNewTraining = (e) => {
+    if (selected === "trainings") setData((prev) => [e.detail, ...prev]);
+  };
+
+  window.addEventListener("new-booking", handleNewBooking);
+  window.addEventListener("new-training", handleNewTraining);
+
+  return () => {
+    window.removeEventListener("new-booking", handleNewBooking);
+    window.removeEventListener("new-training", handleNewTraining);
+  };
+}, [selected]);
+
 
   const columns =
     selected === "bookings"
