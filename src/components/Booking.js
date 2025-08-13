@@ -84,10 +84,6 @@ const Booking = () => {
 
             if (response.ok) {
                     const savedBooking = await response.json();
-                    // Dispatch event so AdminDashboard knows about new booking
-                    const event = new CustomEvent('new-booking', { detail: savedBooking });
-                    window.dispatchEvent(event);
-
                 
                     Swal.fire({
                         icon: 'success',
