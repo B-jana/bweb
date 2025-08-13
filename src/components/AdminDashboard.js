@@ -84,23 +84,7 @@ const AdminDashboard = () => {
     });
   };
 
-  // recent records first
-  useEffect(() => {
-  const handleNewBooking = (e) => {
-    if (selected === "bookings") setData((prev) => [e.detail, ...prev]);
-  };
-  const handleNewTraining = (e) => {
-    if (selected === "trainings") setData((prev) => [e.detail, ...prev]);
-  };
 
-  window.addEventListener("new-booking", handleNewBooking);
-  window.addEventListener("new-training", handleNewTraining);
-
-  return () => {
-    window.removeEventListener("new-booking", handleNewBooking);
-    window.removeEventListener("new-training", handleNewTraining);
-  };
-}, [selected]);
 
 
   const columns =
