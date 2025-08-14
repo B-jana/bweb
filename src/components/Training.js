@@ -68,7 +68,7 @@ const Training = () => {
 const handleBack = () => {
     Swal.close(); // close spinner if user navigates back
     window.removeEventListener("popstate", handleBack);
-    navigate("/home"); // go to /home
+    navigate("/"); // go to /home
     
 };
 window.addEventListener("popstate", handleBack);
