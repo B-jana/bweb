@@ -20,10 +20,14 @@ const AdminLogin = () => {
             return;
         }
 
+        const controller = new AbortController(); // create AbortController
+        const signal = controller.signal;
+
         // Add listener for mobile back button
 const handleBack = () => {
     Swal.close(); // close spinner if user navigates back
     window.removeEventListener("popstate", handleBack);
+    controller.abort(); // cancel API request
     navigate("/"); // go to /home
 };
 window.addEventListener("popstate", handleBack);
@@ -69,6 +73,7 @@ window.addEventListener("popstate", handleBack);
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form),
+                signal,
                 credentials: "include",
             });
 
