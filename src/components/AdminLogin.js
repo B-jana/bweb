@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AdminLogin = () => {
     const [form, setForm] = useState({ username: "", password: "" });
@@ -13,11 +14,46 @@ const AdminLogin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         if (!form.username.trim() || !form.password.trim()) {
             setError("Username and Password cannot be empty.");
             return;
         }
+
+        Swal.fire({
+    background: "transparent", // no background box
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    html: `
+        <div style="text-align:center;">
+            <div style="font-size:18px; color:white; margin-bottom:10px;">
+                Please wait...
+            </div>
+            <div class="custom-spinner"></div>
+        </div>
+    `,
+    didOpen: () => {
+        // Add spinner styling
+        const style = document.createElement("style");
+        style.innerHTML = `
+            .custom-spinner {
+                border: 4px solid rgba(255, 255, 255, 0.3);
+                border-top: 4px solid white;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 1s linear infinite;
+                margin: 0 auto;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
+
 
         try {
             const response = await fetch("https://bwebbackend.onrender.com/api/login", {
@@ -26,6 +62,9 @@ const AdminLogin = () => {
                 body: JSON.stringify(form),
                 credentials: "include",
             });
+
+            Swal.close();
+            
 
             if (response.ok) {
                 // Redirect to admin dashboard on successful login
