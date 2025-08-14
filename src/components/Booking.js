@@ -78,10 +78,16 @@ const Booking = () => {
         
         if (result.isConfirmed){
 
+             const controller = new AbortController(); // create AbortController
+        const signal = controller.signal;
+            
+
             // Add listener for mobile back button
 const handleBack = () => {
     Swal.close(); // close spinner if user navigates back
     window.removeEventListener("popstate", handleBack);
+    controller.abort(); // cancel API request
+    
     navigate("/"); // go to /home
     
 };
@@ -129,6 +135,7 @@ window.addEventListener("popstate", handleBack);
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(form),
+                signal, // attach the abort signal
             });
 
             Swal.close();
