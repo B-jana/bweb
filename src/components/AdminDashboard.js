@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure to delete this?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#e91e63",
