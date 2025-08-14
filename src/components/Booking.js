@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Booking = () => {
 
@@ -15,6 +16,8 @@ const Booking = () => {
     const [message, setMessage] = useState('');
 
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+    
 
 
     // Validation function for all fields
@@ -79,6 +82,8 @@ const Booking = () => {
 const handleBack = () => {
     Swal.close(); // close spinner if user navigates back
     window.removeEventListener("popstate", handleBack);
+    navigate("/"); // go to /home
+    
 };
 window.addEventListener("popstate", handleBack);
 
