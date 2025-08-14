@@ -24,6 +24,7 @@ const AdminLogin = () => {
 const handleBack = () => {
     Swal.close(); // close spinner if user navigates back
     window.removeEventListener("popstate", handleBack);
+    navigate("/"); // go to /home
 };
 window.addEventListener("popstate", handleBack);
 
