@@ -75,6 +75,14 @@ const Booking = () => {
         
         if (result.isConfirmed){
 
+            // Add listener for mobile back button
+const handleBack = () => {
+    Swal.close(); // close spinner if user navigates back
+    window.removeEventListener("popstate", handleBack);
+};
+window.addEventListener("popstate", handleBack);
+
+
              Swal.fire({
             background: "transparent", // no background box
             showConfirmButton: false,
