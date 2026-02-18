@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+//import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -17,7 +18,7 @@ const AdminDashboard = () => {
     if (saved) setContactedMap(JSON.parse(saved));
     else setContactedMap({});
   }, [selected]);
-
+/* 
   useEffect(() => {
     if (selected !== "logout") fetchData();
     else {
@@ -33,9 +34,26 @@ const AdminDashboard = () => {
         else setSelected("bookings");
       });
     }
-  }, [selected]);
+  }, [selected]); */
 
-  const fetchData = async () => {
+  useEffect(() => {
+  if (selected !== "logout") fetchData();
+  else {
+    Swal.fire({
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#e91e63",
+      cancelButtonColor: "#aaa",
+      confirmButtonText: "Yes, logout",
+    }).then((result) => {
+      if (result.isConfirmed) navigate("/");
+      else setSelected("bookings");
+    });
+  }
+}, [selected, fetchData, navigate]);
+
+ /*  const fetchData = async () => {
     setLoading(true);
     setError("");
     try {
@@ -49,7 +67,24 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }; */
+
+  const fetchData = useCallback(async () => {
+  setLoading(true);
+  setError("");
+  try {
+    const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const json = await res.json();
+    setData(json);
+  } catch (err) {
+    setError(err.message || "Error fetching data");
+    setData([]);
+  } finally {
+    setLoading(false);
+  }
+}, [selected]);
+
 
   const handleDelete = async (id) => {
     Swal.fire({
