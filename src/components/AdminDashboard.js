@@ -19,6 +19,41 @@ const AdminDashboard = () => {
     if (saved) setContactedMap(JSON.parse(saved));
     else setContactedMap({});
   }, [selected]);
+
+
+  /*  const fetchData = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
+      if (!res.ok) throw new Error("Failed to fetch data");
+      const json = await res.json();
+      setData(json);
+    } catch (err) {
+      setError(err.message || "Error fetching data");
+      setData([]);
+    } finally {
+      setLoading(false);
+    }
+  }; */
+
+  const fetchData = useCallback(async () => {
+  setLoading(true);
+  setError("");
+  try {
+    const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const json = await res.json();
+    setData(json);
+  } catch (err) {
+    setError(err.message || "Error fetching data");
+    setData([]);
+  } finally {
+    setLoading(false);
+  }
+}, [selected]);
+
+  
 /* 
   useEffect(() => {
     if (selected !== "logout") fetchData();
@@ -54,37 +89,7 @@ const AdminDashboard = () => {
   }
 }, [selected, fetchData, navigate]);
 
- /*  const fetchData = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
-      if (!res.ok) throw new Error("Failed to fetch data");
-      const json = await res.json();
-      setData(json);
-    } catch (err) {
-      setError(err.message || "Error fetching data");
-      setData([]);
-    } finally {
-      setLoading(false);
-    }
-  }; */
-
-  const fetchData = useCallback(async () => {
-  setLoading(true);
-  setError("");
-  try {
-    const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
-    if (!res.ok) throw new Error("Failed to fetch data");
-    const json = await res.json();
-    setData(json);
-  } catch (err) {
-    setError(err.message || "Error fetching data");
-    setData([]);
-  } finally {
-    setLoading(false);
-  }
-}, [selected]);
+ 
 
 
   const handleDelete = async (id) => {
