@@ -141,6 +141,53 @@ const AdminDashboard = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+   const handleView = (item) => {
+        let details = "";
+
+        Object.entries(item).forEach(([key, value]) => {
+            if (value) {
+                details += `<p><b>${key}:</b> ${value}</p>`;
+            }
+        });
+
+        Swal.fire({
+            title: "Details",
+            html: details,
+            width: 600,
+        });
+    };
+
+    const thStyle = {
+        border: "1px solid #ccc",
+        padding: "8px",
+        backgroundColor: "#f0f0f0",
+    };
+
+    const tdStyle = {
+        border: "1px solid #ccc",
+        padding: "8px",
+    };
+
+    const viewBtn = {
+        backgroundColor: "#2196f3",
+        color: "white",
+        border: "none",
+        padding: "5px 10px",
+        borderRadius: "4px",
+        cursor: "pointer",
+        marginRight: "5px",
+    };
+
+    const deleteBtn = {
+        backgroundColor: "red",
+        color: "white",
+        border: "none",
+        padding: "5px 10px",
+        borderRadius: "4px",
+        cursor: "pointer",
+    };
+
   return (
     <div style={{ padding: "1rem", fontFamily: "Arial, sans-serif" }}>
       {/* Top Dropdown */}
@@ -209,7 +256,7 @@ const AdminDashboard = () => {
 
       {!loading && !error && data.length > 0 && (
         <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
-          <thead>
+         /*  <thead>
             <tr>
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0" }}>S.No</th>
               {columns.map((col) => (
@@ -220,8 +267,55 @@ const AdminDashboard = () => {
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0", textAlign: "center" }}>Contacted</th>
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0", textAlign: "center" }}>Actions</th>
             </tr>
-          </thead>
+          </thead> */
+
+         <thead>
+                        <tr>
+                            <th style={thStyle}>S.No</th>
+                            <th style={thStyle}>Name</th>
+                            <th style={thStyle}>Actions</th>
+                        </tr>
+                    </thead>
+
           <tbody>
+                        {data.map((item, idx) => (
+                            <tr key={item.id || idx}>
+
+                                {/* S.No + Contacted Checkbox */}
+                                <td style={tdStyle}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                        {idx + 1}
+                                        <input
+                                            type="checkbox"
+                                            checked={!!contactedMap[item.id]}
+                                            onChange={() => handleContactedChange(item.id)}
+                                        />
+                                    </div>
+                                </td>
+
+                                {/* Name */}
+                                <td style={tdStyle}>{item.name}</td>
+
+                                {/* Actions */}
+                                <td style={{ ...tdStyle, textAlign: "center" }}>
+                                    <button
+                                        onClick={() => handleView(item)}
+                                        style={viewBtn}
+                                    >
+                                        View
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleDelete(item.id)}
+                                        style={deleteBtn}
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+         /*  <tbody>
             {data.map((item, idx) => (
               <tr key={item.id || idx}>
                 <td style={{ border: "1px solid #ccc", padding: "8px" }}>{idx + 1}</td>
@@ -248,7 +342,7 @@ const AdminDashboard = () => {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */
         </table>
       )}
     </div>
