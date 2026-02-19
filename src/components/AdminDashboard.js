@@ -128,7 +128,7 @@ const AdminDashboard = () => {
     });
   };
 
-  const columns = selected === "bookings" ? ["name", "mobile", "date", "service"] : ["name", "email", "mobile", "course"];
+ /*  const columns = selected === "bookings" ? ["name", "mobile", "date", "service"] : ["name", "email", "mobile", "course"]; */
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -256,7 +256,7 @@ const AdminDashboard = () => {
 
       {!loading && !error && data.length > 0 && (
         <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "1rem" }}>
-         /*  <thead>
+       {/*  <thead>
             <tr>
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0" }}>S.No</th>
               {columns.map((col) => (
@@ -267,7 +267,7 @@ const AdminDashboard = () => {
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0", textAlign: "center" }}>Contacted</th>
               <th style={{ border: "1px solid #ccc", padding: "8px", backgroundColor: "#f0f0f0", textAlign: "center" }}>Actions</th>
             </tr>
-          </thead> */
+          </thead> */}
 
          <thead>
                         <tr>
@@ -315,7 +315,7 @@ const AdminDashboard = () => {
                             </tr>
                         ))}
                     </tbody>
-         /*  <tbody>
+{/*  <tbody>
             {data.map((item, idx) => (
               <tr key={item.id || idx}>
                 <td style={{ border: "1px solid #ccc", padding: "8px" }}>{idx + 1}</td>
@@ -342,7 +342,7 @@ const AdminDashboard = () => {
                 </td>
               </tr>
             ))}
-          </tbody> */
+          </tbody> */}
         </table>
       )}
     </div>
