@@ -82,54 +82,63 @@ const Products = () => {
             width: "90%",
             textAlign: "center"
         }}>
-            <h2 style={{ marginBottom: "1rem" }}>
-                Purchase {selectedProduct.name}
-            </h2>
+           <h2 style={{ marginBottom: "1rem" }}>
+    {selectedProduct.name}
+</h2>
 
-            <p style={{ marginBottom: "1rem" }}>
-                For purchasing this product, please contact:
-            </p>
+<p style={{ marginBottom: "1rem", color: "#555" }}>
+    To purchase this product, please contact us:
+</p>
 
-            <h3 style={{ color: "#2196f3", marginBottom: "1.5rem" }}>
-                📞 9398126556
-            </h3>
+<div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+    
+    {/* Call Button */}
+    <a
+        href="tel:9398126556"
+        style={{
+            padding: "0.7rem 1.2rem",
+            backgroundColor: "#2196f3",
+            color: "#fff",
+            textDecoration: "none",
+            borderRadius: "6px",
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px"
+        }}
+    >
+        📞 Call Now
+    </a>
 
-            <button
-                onClick={() => window.location.href = "tel:9685585454"}
-                style={{
-                    padding: "0.6rem 1rem",
-                    backgroundColor: "#4caf50",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    marginRight: "1rem"
-                }}
-            >
-                Call Now
-            </button>
+    {/* WhatsApp Button */}
+    <a
+        href="https://wa.me/919398126556"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+            padding: "0.7rem 1.2rem",
+            backgroundColor: "#25D366",
+            color: "#fff",
+            textDecoration: "none",
+            borderRadius: "6px",
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "5px"
+        }}
+    >
+        💬 WhatsApp
+    </a>
 
-            <button
-                onClick={handleCloseModal}
-                style={{
-                    padding: "0.6rem 1rem",
-                    backgroundColor: "#f44336",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer"
-                }}
-            >
-                Close
-            </button>
+</div>
         </div>
     </div>
-)}
             )}
         </div>
     );
 };
 
 export default Products;
+
 
 
