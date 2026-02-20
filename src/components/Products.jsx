@@ -110,21 +110,23 @@ const Products = () => {
                 </a>
 
                 {/* WhatsApp Button */}
-                <a
-                    href="https://wa.me/919398126556?text=Hi%20I%20am%20interested%20in%20this%20product"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                        padding: "0.7rem 1.2rem",
-                        backgroundColor: "#25D366",
-                        color: "#fff",
-                        textDecoration: "none",
-                        borderRadius: "6px",
-                        fontWeight: "bold",
-                    }}
-                >
-                    💬 WhatsApp
-                </a>
+               <a
+    href={`https://wa.me/919398126556?text=${encodeURIComponent(
+        `Hi, I am interested in purchasing ${selectedProduct.name}`
+    )}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+        padding: "0.7rem 1.2rem",
+        backgroundColor: "#25D366",
+        color: "#fff",
+        textDecoration: "none",
+        borderRadius: "6px",
+        fontWeight: "bold",
+    }}
+>
+    💬 WhatsApp
+</a>
 
                 {/* Cancel Button */}
                 <button
@@ -151,6 +153,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 
