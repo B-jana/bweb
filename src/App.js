@@ -8,6 +8,7 @@ import Training from './components/Training';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import React, { useEffect } from 'react';
+import Products from './components/Products';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/products" element={<Products />} />
 
         </Routes>
        </main>
