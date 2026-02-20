@@ -21,6 +21,46 @@ const AdminDashboard = () => {
         else setContactedMap({});
     }, [selected]);
 
+
+     // ----------------------------
+    // FETCH BOOKINGS/TRAININGS
+    // ----------------------------
+    const fetchData = useCallback(async () => {
+        setLoading(true);
+        setError("");
+        try {
+            const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
+            if (!res.ok) throw new Error("Failed to fetch data");
+            const json = await res.json();
+            setData(json);
+        } catch (err) {
+            setError(err.message || "Error fetching data");
+            setData([]);
+        } finally {
+            setLoading(false);
+        }
+   }, [selected]);
+
+
+     // ----------------------------
+    // FETCH PRODUCTS
+    // ----------------------------
+    const fetchProducts = useCallback(async () => {
+        setLoading(true);
+        setError("");
+        try {
+            const res = await fetch("https://bwebbackend.onrender.com/api/getAllProducts");
+            if (!res.ok) throw new Error("Failed to fetch products");
+            const products = await res.json();
+            setData(products);
+        } catch (err) {
+            setError(err.message || "Failed to fetch products");
+        } finally {
+            setLoading(false);
+        }
+   }, []);
+
+
     // ----------------------------
     // FETCH DATA OR LOGOUT
     // ----------------------------
@@ -49,24 +89,7 @@ const AdminDashboard = () => {
 
 
 
-    // ----------------------------
-    // FETCH BOOKINGS/TRAININGS
-    // ----------------------------
-    const fetchData = useCallback(async () => {
-        setLoading(true);
-        setError("");
-        try {
-            const res = await fetch(`https://bwebbackend.onrender.com/api/${selected}`);
-            if (!res.ok) throw new Error("Failed to fetch data");
-            const json = await res.json();
-            setData(json);
-        } catch (err) {
-            setError(err.message || "Error fetching data");
-            setData([]);
-        } finally {
-            setLoading(false);
-        }
-   }, [selected]);
+   
 
     // ----------------------------
     // DELETE RECORD
@@ -176,24 +199,7 @@ const AdminDashboard = () => {
     // ----------------------------
     const [newProduct, setNewProduct] = useState({ name: "", price: "", description: "", image: null });
 
-    // ----------------------------
-    // FETCH PRODUCTS
-    // ----------------------------
-    const fetchProducts = useCallback(async () => {
-        setLoading(true);
-        setError("");
-        try {
-            const res = await fetch("https://bwebbackend.onrender.com/api/getAllProducts");
-            if (!res.ok) throw new Error("Failed to fetch products");
-            const products = await res.json();
-            setData(products);
-        } catch (err) {
-            setError(err.message || "Failed to fetch products");
-        } finally {
-            setLoading(false);
-        }
-   }, []);
-
+   
     // ----------------------------
     // ADD PRODUCT
     // ----------------------------
