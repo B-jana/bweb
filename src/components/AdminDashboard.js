@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -45,14 +45,14 @@ const AdminDashboard = () => {
             });
         }
 
-    }, [selected]);
+    }, [selected, fetchData, fetchProducts, navigate]);
 
 
 
     // ----------------------------
     // FETCH BOOKINGS/TRAININGS
     // ----------------------------
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         setLoading(true);
         setError("");
         try {
@@ -66,7 +66,7 @@ const AdminDashboard = () => {
         } finally {
             setLoading(false);
         }
-    };
+   }, [selected]);
 
     // ----------------------------
     // DELETE RECORD
@@ -179,7 +179,7 @@ const AdminDashboard = () => {
     // ----------------------------
     // FETCH PRODUCTS
     // ----------------------------
-    const fetchProducts = async () => {
+    const fetchProducts = useCallback(async () => {
         setLoading(true);
         setError("");
         try {
@@ -192,7 +192,7 @@ const AdminDashboard = () => {
         } finally {
             setLoading(false);
         }
-    };
+   }, []);
 
     // ----------------------------
     // ADD PRODUCT
