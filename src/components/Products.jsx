@@ -61,6 +61,7 @@ const Products = () => {
             </div>
 
             {/* Contact Modal */}
+{/* Contact Modal */}
 {selectedProduct && (
     <div style={{
         position: "fixed",
@@ -82,63 +83,75 @@ const Products = () => {
             width: "90%",
             textAlign: "center"
         }}>
-           <h2 style={{ marginBottom: "1rem" }}>
-    {selectedProduct.name}
-</h2>
+            
+            <h2 style={{ marginBottom: "1rem" }}>
+                {selectedProduct.name}
+            </h2>
 
-<p style={{ marginBottom: "1rem", color: "#555" }}>
-    To purchase this product, please contact us:
-</p>
+            <p style={{ marginBottom: "1.5rem", color: "#555" }}>
+                To purchase this product, please contact us:
+            </p>
 
-<div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-    
-    {/* Call Button */}
-    <a
-        href="tel:9398126556"
-        style={{
-            padding: "0.7rem 1.2rem",
-            backgroundColor: "#2196f3",
-            color: "#fff",
-            textDecoration: "none",
-            borderRadius: "6px",
-            fontWeight: "bold",
-            display: "flex",
-            alignItems: "center",
-            gap: "5px"
-        }}
-    >
-        📞 Call Now
-    </a>
+            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+                
+                {/* Call Button */}
+                <a
+                    href="tel:9398126556"
+                    style={{
+                        padding: "0.7rem 1.2rem",
+                        backgroundColor: "#2196f3",
+                        color: "#fff",
+                        textDecoration: "none",
+                        borderRadius: "6px",
+                        fontWeight: "bold",
+                    }}
+                >
+                    📞 Call
+                </a>
 
-    {/* WhatsApp Button */}
-    <a
-        href="https://wa.me/919398126556"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-            padding: "0.7rem 1.2rem",
-            backgroundColor: "#25D366",
-            color: "#fff",
-            textDecoration: "none",
-            borderRadius: "6px",
-            fontWeight: "bold",
-            display: "flex",
-            alignItems: "center",
-            gap: "5px"
-        }}
-    >
-        💬 WhatsApp
-    </a>
+                {/* WhatsApp Button */}
+                <a
+                    href="https://wa.me/919398126556?text=Hi%20I%20am%20interested%20in%20this%20product"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                        padding: "0.7rem 1.2rem",
+                        backgroundColor: "#25D366",
+                        color: "#fff",
+                        textDecoration: "none",
+                        borderRadius: "6px",
+                        fontWeight: "bold",
+                    }}
+                >
+                    💬 WhatsApp
+                </a>
 
-</div>
+                {/* Cancel Button */}
+                <button
+                    onClick={handleCloseModal}
+                    style={{
+                        padding: "0.7rem 1.2rem",
+                        backgroundColor: "#f44336",
+                        color: "#fff",
+                        border: "none",
+                        borderRadius: "6px",
+                        cursor: "pointer",
+                        fontWeight: "bold",
+                    }}
+                >
+                    Cancel
+                </button>
+
+            </div>
         </div>
     </div>
-            )}
+)}
         </div>
     );
 };
 
 export default Products;
+
 
 
 
