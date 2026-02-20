@@ -147,6 +147,8 @@ const AdminDashboard = () => {
     const handleView = (item) => {
         let details = "";
         Object.entries(item).forEach(([key, value]) => {
+
+            if (key === "id") return;
             if (!value) return;
 
             if (key === "imageName") {
