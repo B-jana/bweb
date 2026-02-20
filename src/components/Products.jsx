@@ -6,7 +6,7 @@ const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/getAllProducts")
+        fetch("https://bwebbackend.onrender.com/api/getAllProducts")
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error(err))
@@ -32,7 +32,7 @@ const Products = () => {
                 {products.map((p) => (
                     <div key={p.id} style={{ border: "1px solid #ddd", borderRadius: "8px", overflow: "hidden", boxShadow: "0 2px 5px rgba(0,0,0,0.1)" }}>
                         <img
-                            src={`http://localhost:8080/uploads/${p.imageName}`}
+                            src={`https://bwebbackend.onrender.com/uploads/${p.imageName}`}
                             alt={p.name}
                             style={{ width: "100%", height: "180px", objectFit: "cover" }}
                         />
@@ -98,3 +98,4 @@ const Products = () => {
 };
 
 export default Products;
+
