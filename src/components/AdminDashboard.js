@@ -144,30 +144,33 @@ const AdminDashboard = () => {
     // ----------------------------
     // VIEW DETAILS
     // ----------------------------
-    const handleView = (item) => {
-        let details = "";
-        Object.entries(item).forEach(([key, value]) => {
+   const handleView = (item) => {
+    let details = "";
 
-            if (key === "id") return;
-            if (!value) return;
+    Object.entries(item).forEach(([key, value]) => {
 
-            if (key === "imageName") {
-                details += `<p><b>Image:</b><br/>
-                        <img src={p.imageUrl} 
-                             alt="${item.name}" 
-                             style="max-width:200px; max-height:200px; border:1px solid #ccc; padding:2px;" />
-                        </p>`;
-            } else {
-                details += `<p><b>${key}:</b> ${value}</p>`;
-            }
-        });
+        if (key === "id") return;
+        if (!value) return;
 
-        Swal.fire({
-            title: "Details",
-            html: details,
-            width: 600
-        });
-    };
+        if (key === "imageUrl") {   // ✅ FIXED
+            details += `
+                <p><b>Image:</b><br/>
+                    <img src="${value}" 
+                         alt="${item.name}" 
+                         style="max-width:200px; max-height:200px; border:1px solid #ccc; padding:2px;" />
+                </p>
+            `;
+        } else {
+            details += `<p><b>${key}:</b> ${value}</p>`;
+        }
+    });
+
+    Swal.fire({
+        title: "Details",
+        html: details,
+        width: 600
+    });
+};
 
 
     // ----------------------------
