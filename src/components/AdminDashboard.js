@@ -153,7 +153,7 @@ const AdminDashboard = () => {
 
             if (key === "imageName") {
                 details += `<p><b>Image:</b><br/>
-                        <img src="https://bwebbackend.onrender.com/uploads/${value}" 
+                        <img src={p.imageUrl} 
                              alt="${item.name}" 
                              style="max-width:200px; max-height:200px; border:1px solid #ccc; padding:2px;" />
                         </p>`;
