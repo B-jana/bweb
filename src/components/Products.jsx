@@ -32,7 +32,7 @@ const Products = () => {
                 {products.map((p) => (
                     <div key={p.id} style={{ border: "1px solid #ddd", borderRadius: "8px", overflow: "hidden", boxShadow: "0 2px 5px rgba(0,0,0,0.1)" }}>
                         <img
-                            src={`https://bwebbackend.onrender.com/uploads/${p.imageName}`}
+                            src={p.imageUrl}
                             alt={p.name}
                             style={{ width: "100%", height: "180px", objectFit: "cover" }}
                         />
@@ -153,6 +153,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 
